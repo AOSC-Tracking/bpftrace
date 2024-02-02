@@ -3,6 +3,7 @@
 #include "types.h"
 #include <cstddef>
 #include <linux/types.h>
+#include <linux/version.h>
 #include <map>
 #include <optional>
 #include <regex>
@@ -13,6 +14,15 @@
 
 struct btf;
 struct btf_type;
+
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5,5,0)
+/* this is required to build with 5.4 and earlier kernel headers */
+enum btf_func_linkage {
+    BTF_FUNC_STATIC = 0,
+    BTF_FUNC_GLOBAL = 1,
+    BTF_FUNC_EXTERN = 2,
+};
+#endif
 
 namespace bpftrace {
 
