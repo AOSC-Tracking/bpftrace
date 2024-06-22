@@ -62,7 +62,7 @@ set_target_properties(libbpftrace PROPERTIES PREFIX "")
 add_executable(${BPFTRACE}
   ${MAIN_SRC}
 )
-target_include_directories(${BPFTRACE} PUBLIC ${CMAKE_BINARY_DIR}/src)
+target_include_directories(${BPFTRACE} PUBLIC ${CMAKE_SOURCE_DIR}/src)
 
 install(TARGETS ${BPFTRACE} DESTINATION ${CMAKE_INSTALL_BINDIR})
 target_link_libraries(${BPFTRACE} libbpftrace)
